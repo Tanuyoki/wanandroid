@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2019 Tanuyoki.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources>
+
+    <declare-styleable name="TabItemView">
+        <attr name="drawableLeft" format="reference"/>
+        <attr name="drawableTop" format="reference"/>
+        <attr name="drawableRight" format="reference"/>
+        <attr name="drawableBottom" format="reference"/>
+        <attr name="drawableLeftWidth" format="dimension"/>
+        <attr name="drawableLeftHeight" format="dimension"/>
+        <attr name="drawableTopWidth" format="dimension"/>
+        <attr name="drawableTopHeight" format="dimension"/>
+        <attr name="drawableRightWidth" format="dimension"/>
+        <attr name="drawableRightHeight" format="dimension"/>
+        <attr name="drawableBottomWidth" format="dimension"/>
+        <attr name="drawableBottomHeight" format="dimension"/>
+        <attr name="drawableLeftPadding" format="dimension"/>
+    </declare-styleable>
+
+
+</resources>

@@ -1,6 +1,7 @@
-package cn.yoki.wanandroid;
+package cn.yoki.library;
 
 import android.content.Context;
+
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -19,8 +20,8 @@ public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("cn.yoki.wanandroid", appContext.getPackageName());
+        assertEquals("cn.yoki.library.test", appContext.getPackageName());
     }
 }

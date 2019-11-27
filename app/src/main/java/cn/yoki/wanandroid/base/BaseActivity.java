@@ -12,6 +12,8 @@ public class BaseActivity extends Activity {
     protected void onCreate(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+
+
     }
 
 
