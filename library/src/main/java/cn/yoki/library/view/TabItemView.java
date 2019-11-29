@@ -22,6 +22,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import androidx.core.widget.TextViewCompat;
+
 import cn.yoki.library.R;
 
 
