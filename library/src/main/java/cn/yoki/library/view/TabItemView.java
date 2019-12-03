@@ -94,4 +94,6 @@ public class TabItemView extends TextView {
         setCompoundDrawables(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 
+
+
 }

@@ -13,6 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <cn.yoki.library.view.TabItemView
+            android:id="@+id/main_tab_home"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -25,10 +26,11 @@
             android:drawablePadding="5dp"/>
 
         <cn.yoki.library.view.TabItemView
+            android:id="@+id/main_tab_square"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="首页"
+            android:text="广场"
             android:gravity="center"
             android:padding="10dp"
             app:drawableTop="@drawable/ic_launcher_background"
@@ -37,10 +39,11 @@
             android:drawablePadding="5dp"/>
 
         <cn.yoki.library.view.TabItemView
+            android:id="@+id/main_tab_system"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="首页"
+            android:text="体系"
             android:gravity="center"
             android:padding="10dp"
             app:drawableTop="@drawable/ic_launcher_background"
@@ -49,10 +52,24 @@
             android:drawablePadding="5dp"/>
 
         <cn.yoki.library.view.TabItemView
+            android:id="@+id/main_tab_project"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="首页"
+            android:text="项目"
+            android:gravity="center"
+            android:padding="10dp"
+            app:drawableTop="@drawable/ic_launcher_background"
+            app:drawableTopWidth="20dp"
+            app:drawableTopHeight="20dp"
+            android:drawablePadding="5dp"/>
+
+        <cn.yoki.library.view.TabItemView
+            android:id="@+id/main_tab_me"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="我的"
             android:gravity="center"
             android:padding="10dp"
             app:drawableTop="@drawable/ic_launcher_background"

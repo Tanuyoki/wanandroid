@@ -15,8 +15,12 @@ public class MainActivity extends BaseActivity {
 
 
 
-
     }
 
+    private void initView() {
+
+
+
+    }
 
 }
