@@ -30,6 +30,8 @@
         <attr name="drawableBottomWidth" format="dimension"/>
         <attr name="drawableBottomHeight" format="dimension"/>
         <attr name="drawableLeftPadding" format="dimension"/>
+        <attr name="selectedTextColor" format="color" />
+        <attr name="selectedDrawable" format="reference" />
     </declare-styleable>
 
 

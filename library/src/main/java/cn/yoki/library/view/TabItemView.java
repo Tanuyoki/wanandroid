@@ -20,22 +20,25 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.TextView;
-
-import androidx.core.widget.TextViewCompat;
 
 import cn.yoki.library.R;
 
 
-public class TabItemView extends TextView {
+public class TabItemView extends TextView implements View.OnClickListener {
     private Drawable drawableLeft = null;
     private Drawable drawableTop = null;
     private Drawable drawableRight = null;
     private Drawable drawableBottom = null;
+    private Drawable selectedDrawable;
+    private Drawable defaultDrawable;
     private int drawableLeftWidth, drawableLeftHeight;
     private int drawableTopWidth, drawableTopHeight;
     private int drawableRightWidth, drawableRightHeight;
     private int drawableBottomWidth, drawableBottomHeight;
+    private int selectedTextColor;
+    private int defaultTextColor;
 
     public TabItemView(Context context) {
         this(context, null);
@@ -76,24 +79,60 @@ public class TabItemView extends TextView {
                 drawableBottomWidth = typedArray.getDimensionPixelSize(attr, 0);
             } else if (attr == R.styleable.TabItemView_drawableBottomHeight) {
                 drawableBottomHeight = typedArray.getDimensionPixelSize(attr, 0);
+            } else if (attr == R.styleable.TabItemView_selectedTextColor) {
+                selectedTextColor = typedArray.getColor(attr, 0);
+            } else if (attr == R.styleable.TabItemView_selectedDrawable) {
+                selectedDrawable = typedArray.getDrawable(attr);
             }
         }
 
         if (null != drawableLeft) {
             drawableLeft.setBounds(0, 0, drawableLeftWidth, drawableLeftHeight);
+            defaultDrawable = drawableLeft;
         }
         if (null != drawableTop) {
             drawableTop.setBounds(0, 0, drawableTopWidth, drawableTopHeight);
+            defaultDrawable = drawableTop;
+            if (null != selectedDrawable) {
+                selectedDrawable.setBounds(0, 0, drawableTopWidth, drawableTopHeight);
+            }
         }
         if (null != drawableRight) {
             drawableRight.setBounds(0, 0, drawableRightWidth, drawableRightHeight);
+            defaultDrawable = drawableRight;
         }
         if (null != drawableBottom) {
             drawableBottom.setBounds(0, 0, drawableBottomWidth, drawableBottomHeight);
+            defaultDrawable = drawableBottom;
         }
         setCompoundDrawables(drawableLeft, drawableTop, drawableRight, drawableBottom);
+
+        setOnClickListener(this);
     }
 
+    @Override
+    public void setTextColor(int color) {
+        super.setTextColor(color);
+    }
+
+    @Override
+    public void onClick(View v) {
+        v.setSelected(!v.isSelected());
+        if (v.isSelected()) {
+            defaultTextColor = getCurrentTextColor();
+            setTextColor(selectedTextColor);
+            if (drawableTop != null) {
+                setCompoundDrawables(null, selectedDrawable, null, null);
+            }
+        } else {
+            setTextColor(defaultTextColor);
+
+            if (drawableTop != null) {
+                setCompoundDrawables(null, defaultDrawable, null, null);
+            }
+        }
+
+    }
 
 
 }

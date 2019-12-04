@@ -4,7 +4,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/main_tab_container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
+        android:id="@+id/main_tab_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -18,12 +28,14 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="首页"
+            android:textColor="@color/colorBlack"
             android:gravity="center"
             android:padding="10dp"
-            app:drawableTop="@drawable/ic_launcher_background"
-            app:drawableTopWidth="20dp"
-            app:drawableTopHeight="20dp"
-            android:drawablePadding="5dp"/>
+            app:selectedTextColor="@color/colorPrimary"
+            app:selectedDrawable="@drawable/ic_home_primary_24dp"
+            app:drawableTop="@drawable/ic_home_black_24dp"
+            app:drawableTopWidth="30dp"
+            app:drawableTopHeight="30dp"/>
 
         <cn.yoki.library.view.TabItemView
             android:id="@+id/main_tab_square"
@@ -33,10 +45,11 @@
             android:text="广场"
             android:gravity="center"
             android:padding="10dp"
-            app:drawableTop="@drawable/ic_launcher_background"
-            app:drawableTopWidth="20dp"
-            app:drawableTopHeight="20dp"
-            android:drawablePadding="5dp"/>
+            app:selectedTextColor="@color/colorPrimary"
+            app:selectedDrawable="@drawable/ic_domain_primary_24dp"
+            app:drawableTop="@drawable/ic_domain_black_24dp"
+            app:drawableTopWidth="30dp"
+            app:drawableTopHeight="30dp"/>
 
         <cn.yoki.library.view.TabItemView
             android:id="@+id/main_tab_system"
@@ -46,10 +59,11 @@
             android:text="体系"
             android:gravity="center"
             android:padding="10dp"
-            app:drawableTop="@drawable/ic_launcher_background"
-            app:drawableTopWidth="20dp"
-            app:drawableTopHeight="20dp"
-            android:drawablePadding="5dp"/>
+            app:selectedTextColor="@color/colorPrimary"
+            app:selectedDrawable="@drawable/ic_device_hub_primary_24dp"
+            app:drawableTop="@drawable/ic_device_hub_black_24dp"
+            app:drawableTopWidth="30dp"
+            app:drawableTopHeight="30dp"/>
 
         <cn.yoki.library.view.TabItemView
             android:id="@+id/main_tab_project"
@@ -59,10 +73,11 @@
             android:text="项目"
             android:gravity="center"
             android:padding="10dp"
-            app:drawableTop="@drawable/ic_launcher_background"
-            app:drawableTopWidth="20dp"
-            app:drawableTopHeight="20dp"
-            android:drawablePadding="5dp"/>
+            app:selectedTextColor="@color/colorPrimary"
+            app:selectedDrawable="@drawable/ic_archive_primary_24dp"
+            app:drawableTop="@drawable/ic_archive_black_24dp"
+            app:drawableTopWidth="30dp"
+            app:drawableTopHeight="30dp"/>
 
         <cn.yoki.library.view.TabItemView
             android:id="@+id/main_tab_me"
@@ -72,10 +87,11 @@
             android:text="我的"
             android:gravity="center"
             android:padding="10dp"
-            app:drawableTop="@drawable/ic_launcher_background"
-            app:drawableTopWidth="20dp"
-            app:drawableTopHeight="20dp"
-            android:drawablePadding="5dp"/>
+            app:selectedTextColor="@color/colorPrimary"
+            app:selectedDrawable="@drawable/ic_perm_identity_primary_24dp"
+            app:drawableTop="@drawable/ic_perm_identity_black_24dp"
+            app:drawableTopWidth="30dp"
+            app:drawableTopHeight="30dp"/>
 
     </LinearLayout>
 
