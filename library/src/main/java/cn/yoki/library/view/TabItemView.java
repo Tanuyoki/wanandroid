@@ -107,6 +107,7 @@ public class TabItemView extends TextView implements View.OnClickListener {
         }
         setCompoundDrawables(drawableLeft, drawableTop, drawableRight, drawableBottom);
 
+        defaultTextColor = getCurrentTextColor();
         setOnClickListener(this);
     }
 
@@ -117,21 +118,23 @@ public class TabItemView extends TextView implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        v.setSelected(!v.isSelected());
-        if (v.isSelected()) {
-            defaultTextColor = getCurrentTextColor();
+
+
+    }
+
+    public void setSwitchState(boolean isOn) {
+        setSelected(isOn);
+        if (isSelected()) {
             setTextColor(selectedTextColor);
             if (drawableTop != null) {
                 setCompoundDrawables(null, selectedDrawable, null, null);
             }
         } else {
             setTextColor(defaultTextColor);
-
             if (drawableTop != null) {
                 setCompoundDrawables(null, defaultDrawable, null, null);
             }
         }
-
     }
 
 
