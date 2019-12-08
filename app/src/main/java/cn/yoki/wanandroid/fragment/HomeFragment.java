@@ -30,11 +30,12 @@ public class HomeFragment extends BaseFragment {
         ViewPager viewPager = view.findViewById(R.id.home_vp);
 
         View view1 = View.inflate(mActivity, R.layout.adapter_banner, null);
+        View view2 = View.inflate(mActivity, R.layout.adapter_banner, null);
+        View view3 = View.inflate(mActivity, R.layout.adapter_banner, null);
         List<View> list = new ArrayList<>();
         list.add(view1);
-        list.add(view1);
-        list.add(view1);
-        list.add(view1);
+        list.add(view2);
+        list.add(view3);
         BannerViewPager bannerViewPager = new BannerViewPager(list);
 
         viewPager.setAdapter(bannerViewPager);

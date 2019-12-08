@@ -38,12 +38,9 @@ public class MainActivity extends BaseActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = manager.beginTransaction();
-//        fragmentTransaction.add(R.id.main_fragment, homeFragment);
+        fragmentTransaction.add(R.id.main_frame, homeFragment);
         fragmentTransaction.commit();
 
-//        getSupportFragmentManager().beginTransaction()
-//                .add(R.id.main_frame, HomeFragment.newInstance())
-//                .commit();
 
     }
 
