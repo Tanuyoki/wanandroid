@@ -9,40 +9,39 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
-import java.lang.reflect.AccessibleObject;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.yoki.wanandroid.R;
+import cn.yoki.wanandroid.adapter.BannerViewPager;
 import cn.yoki.wanandroid.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {
 
-    private static final String PARAM_KEY = "param_key";
-    private String mParam;
-    private Activity mActivity;
-
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        mActivity = (Activity) context;
-        mParam = getArguments().getString(PARAM_KEY);
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_main, container, false);
+    protected void initView(View view, Bundle savedInstanceState) {
+        ViewPager viewPager = view.findViewById(R.id.home_vp);
 
-        return root;
+        View view1 = View.inflate(mActivity, R.layout.adapter_banner, null);
+        List<View> list = new ArrayList<>();
+        list.add(view1);
+        list.add(view1);
+        list.add(view1);
+        list.add(view1);
+        BannerViewPager bannerViewPager = new BannerViewPager(list);
+
+        viewPager.setAdapter(bannerViewPager);
     }
 
-//    public static HomeFragment newInstance(String str) {
-//        HomeFragment homeFragment = new HomeFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putString(PARAM_KEY, str);
-//        homeFragment.setArguments(bundle);
-//        return homeFragment;
-//    }
+    @Override
+    protected void destroyView() {
 
+    }
 }

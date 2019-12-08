@@ -1,19 +1,19 @@
 package cn.yoki.wanandroid.activity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.FrameLayout;
 
-import cn.yoki.library.utils.OnSwitchClickListener;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import cn.yoki.library.utils.SwitchUtils;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.base.BaseActivity;
-import cn.yoki.wanandroid.base.BaseFragment;
 import cn.yoki.wanandroid.fragment.HomeFragment;
 
 public class MainActivity extends BaseActivity {
 
-    private FrameLayout frameLayout;
     private SwitchUtils switchUtils;
 
     @Override
@@ -24,7 +24,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        frameLayout = findViewById(R.id.main_frame);
 
         switchUtils = new SwitchUtils(
                 findViewById(R.id.main_tab_home),
@@ -33,6 +32,14 @@ public class MainActivity extends BaseActivity {
                 findViewById(R.id.main_tab_project),
                 findViewById(R.id.main_tab_me));
         switchUtils.enableSwitch();
+
+
+        HomeFragment homeFragment = new HomeFragment();
+
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+//        fragmentTransaction.add(R.id.main_fragment, homeFragment);
+        fragmentTransaction.commit();
 
 //        getSupportFragmentManager().beginTransaction()
 //                .add(R.id.main_frame, HomeFragment.newInstance())
