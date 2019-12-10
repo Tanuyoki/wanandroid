@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import cn.yoki.library.utils.StatusBarUtils;
 import cn.yoki.library.utils.SwitchUtils;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.base.BaseActivity;
@@ -41,7 +42,7 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.add(R.id.main_frame, homeFragment);
         fragmentTransaction.commit();
 
-
+        StatusBarUtils.transparentStatusBar(this);
 
     }
 
