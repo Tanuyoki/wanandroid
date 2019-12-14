@@ -11,12 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.yoki.library.okhttp.HttpClient;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerViewPager;
 import cn.yoki.wanandroid.base.BaseFragment;
+import okhttp3.OkHttpClient;
 
 public class HomeFragment extends BaseFragment {
 
@@ -27,6 +31,15 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String result = HttpClient.get("https://www.wanandroid.com/banner/json");
+                JSONObject jsonObject = JSONObject.parseObject(result);
+
+            }
+        }).start();
+
         ViewPager viewPager = view.findViewById(R.id.home_vp);
 
         View view1 = View.inflate(mActivity, R.layout.adapter_banner, null);
