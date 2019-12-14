@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.add(R.id.main_frame, homeFragment);
         fragmentTransaction.commit();
 
-        StatusBarUtils.transparentStatusBar(this);
+        StatusBarUtils.transparentStatusBar();
 
     }
 

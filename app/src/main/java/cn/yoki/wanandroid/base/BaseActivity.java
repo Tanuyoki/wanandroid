@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import cn.yoki.library.Toolkit;
+
 public class BaseActivity extends AppCompatActivity {
 
     private Context mContext;
@@ -14,10 +16,12 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-
-
+        Toolkit.pushActivity(this);
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toolkit.popActiivty(this);
+    }
 }
