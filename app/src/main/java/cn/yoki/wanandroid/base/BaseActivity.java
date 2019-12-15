@@ -1,6 +1,5 @@
 package cn.yoki.wanandroid.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -22,6 +21,6 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toolkit.popActiivty(this);
+        Toolkit.popActivity(this);
     }
 }

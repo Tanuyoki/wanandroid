@@ -11,7 +11,7 @@ public class Toolkit {
         Toolkit.activity = activity;
     }
 
-    public static void popActiivty(Activity activity) {
+    public static void popActivity(Activity activity) {
         Toolkit.activity = null;
     }
 

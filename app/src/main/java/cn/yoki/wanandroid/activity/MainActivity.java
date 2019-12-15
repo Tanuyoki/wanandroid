@@ -1,12 +1,14 @@
 package cn.yoki.wanandroid.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import cn.yoki.library.utils.OnSwitchClickListener;
 import cn.yoki.library.utils.StatusBarUtils;
 import cn.yoki.library.utils.SwitchUtils;
 import cn.yoki.wanandroid.R;
@@ -33,7 +35,10 @@ public class MainActivity extends BaseActivity {
                 findViewById(R.id.main_tab_project),
                 findViewById(R.id.main_tab_me));
         switchUtils.enableSwitch();
+        switchUtils.switchView(0);
+        switchUtils.setOnSwitchClickListener((view, isOn) -> {
 
+        });
 
         HomeFragment homeFragment = new HomeFragment();
 
@@ -42,7 +47,7 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.add(R.id.main_frame, homeFragment);
         fragmentTransaction.commit();
 
-        StatusBarUtils.transparentStatusBar();
+        StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
 
     }
 

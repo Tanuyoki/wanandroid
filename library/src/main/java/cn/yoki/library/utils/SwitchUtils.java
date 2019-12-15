@@ -51,6 +51,11 @@ public class SwitchUtils {
         isEnableSwitch = true;
     }
 
+    public void switchView(int index) {
+        if (index >= 0 && index < views.length)
+            views[index].performClick();
+    }
+
     public void setOnSwitchClickListener(OnSwitchClickListener onViewSwitchClick) {
         this.onSwitchClickListener = onViewSwitchClick;
     }

@@ -42,19 +42,32 @@ public class HttpClient {
 
     private static final Handler handler = new Handler(Looper.getMainLooper());
 
-    public static String get(String url) {
-        OkHttpClient client = new OkHttpClient();
+    public static void get(String url, DisposeDataListener listener) {
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+        new OkHttpClient().newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                handler.post(() -> {
+                    if (listener != null) {
+                        listener.onFailed(call, e);
+                    }
+                });
+            }
 
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String result = response.body().string();
+
+                handler.post(() -> {
+                    if (listener != null) {
+                        listener.onSuccess(result);
+                    }
+                });
+            }
+        });
 
     }
 
