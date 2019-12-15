@@ -14,6 +14,10 @@ import cn.yoki.library.utils.SwitchUtils;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.base.BaseActivity;
 import cn.yoki.wanandroid.fragment.HomeFragment;
+import cn.yoki.wanandroid.fragment.MeFragment;
+import cn.yoki.wanandroid.fragment.ProjectFragment;
+import cn.yoki.wanandroid.fragment.SquareFragment;
+import cn.yoki.wanandroid.fragment.TreeFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -40,14 +44,20 @@ public class MainActivity extends BaseActivity {
 
         });
 
-        HomeFragment homeFragment = new HomeFragment();
-
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.add(R.id.main_frame, homeFragment);
-        fragmentTransaction.commit();
+        addFragment(new HomeFragment());
 
         StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
+
+    }
+
+    private void addFragment(Fragment fragment) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.add(R.id.main_frame, fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void initFragment() {
 
     }
 

@@ -3,6 +3,9 @@ package cn.yoki.library.utils;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import androidx.fragment.app.Fragment;
+
+import java.util.List;
 import java.util.UUID;
 
 import cn.yoki.library.view.TabItemView;
@@ -19,9 +22,11 @@ public class SwitchUtils {
     }
 
     private void initView() {
+        int index = 0;
         for (View view: views) {
-            view.setTag(UUID.randomUUID());
+            view.setTag(index);
             view.setOnClickListener(viewOnClickListener);
+            index ++;
         }
     }
 

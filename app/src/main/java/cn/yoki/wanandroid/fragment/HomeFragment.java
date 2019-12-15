@@ -24,6 +24,7 @@ import cn.yoki.library.okhttp.listener.DisposeDataListener;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerViewPager;
 import cn.yoki.wanandroid.base.BaseFragment;
+import cn.yoki.wanandroid.utils.Constant;
 import okhttp3.OkHttpClient;
 
 public class HomeFragment extends BaseFragment {
@@ -35,7 +36,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        HttpClient.get("https://www.wanandroid.com/banner/json", new DisposeDataListener() {
+        HttpClient.get(Constant.API.HOME_BANNER, new DisposeDataListener() {
             @Override
             public void onSuccess(Object object) {
                 JSONObject jsonObject = JSONObject.parseObject(String.valueOf(object));
@@ -52,7 +53,6 @@ public class HomeFragment extends BaseFragment {
                 }
                 ViewPager viewPager = view.findViewById(R.id.home_vp);
                 BannerViewPager bannerViewPager = new BannerViewPager(list);
-
                 viewPager.setAdapter(bannerViewPager);
 
             }
