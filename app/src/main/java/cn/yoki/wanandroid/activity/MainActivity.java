@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.yoki.library.utils.FragmentHelper;
 import cn.yoki.library.utils.OnSwitchClickListener;
 import cn.yoki.library.utils.StatusBarUtils;
 import cn.yoki.library.utils.SwitchUtils;
@@ -22,6 +26,7 @@ import cn.yoki.wanandroid.fragment.TreeFragment;
 public class MainActivity extends BaseActivity {
 
     private SwitchUtils switchUtils;
+    private FragmentHelper fragmentHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,25 +45,27 @@ public class MainActivity extends BaseActivity {
                 findViewById(R.id.main_tab_me));
         switchUtils.enableSwitch();
         switchUtils.switchView(0);
-        switchUtils.setOnSwitchClickListener((view, isOn) -> {
-
+        switchUtils.setOnSwitchClickListener((view, isOn, index) -> {
+            if (isOn)
+                fragmentHelper.showFragment(index);
         });
 
-        addFragment(new HomeFragment());
+        List<Fragment> list = new ArrayList<>();
+        list.add(new HomeFragment());
+        list.add(new SquareFragment());
+        list.add(new TreeFragment());
+        list.add(new ProjectFragment());
+        list.add(new MeFragment());
+        fragmentHelper = new FragmentHelper(
+                this, R.id.main_frame, getSupportFragmentManager(),  list);
+        fragmentHelper.showFragment(0);
 
         StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
 
-    }
-
-    private void addFragment(Fragment fragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = manager.beginTransaction();
-        fragmentTransaction.add(R.id.main_frame, fragment);
-        fragmentTransaction.commit();
-    }
-
-    private void initFragment() {
 
     }
+
+
+
 
 }

@@ -94,16 +94,19 @@ public class HttpClient {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String result = response.body().string();
-
-                handler.post(() -> {
-                    if (listener != null) {
-                        listener.onSuccess(result);
-                    }
-                });
+                handleResponse(response.body().string(), listener);
             }
         });
 
+    }
+
+    private static void handleResponse(String response, DisposeDataListener listener) {
+
+        handler.post(() -> {
+            if (listener != null) {
+                listener.onSuccess(response);
+            }
+        });
     }
 
 }

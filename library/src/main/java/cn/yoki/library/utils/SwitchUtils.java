@@ -48,7 +48,7 @@ public class SwitchUtils {
             tabItemView.setSwitchState(isOn);
         }
         if (onSwitchClickListener != null) {
-            onSwitchClickListener.onSwitchClick(v, isOn);
+            onSwitchClickListener.onSwitchClick(v, isOn, Integer.valueOf(String.valueOf(v.getTag())));
         }
     }
 

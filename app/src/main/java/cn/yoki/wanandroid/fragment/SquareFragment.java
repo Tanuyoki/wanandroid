@@ -3,6 +3,7 @@ package cn.yoki.wanandroid.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.base.BaseFragment;
 
 public class SquareFragment extends BaseFragment {
@@ -10,7 +11,7 @@ public class SquareFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_square;
     }
 
     @Override
