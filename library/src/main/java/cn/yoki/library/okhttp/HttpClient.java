@@ -101,7 +101,8 @@ public class HttpClient {
     }
 
     private static void handleResponse(String response, DisposeDataListener listener) {
-
+        JSONObject jsonObject = JSONObject.parseObject(response);
+        
         handler.post(() -> {
             if (listener != null) {
                 listener.onSuccess(response);
