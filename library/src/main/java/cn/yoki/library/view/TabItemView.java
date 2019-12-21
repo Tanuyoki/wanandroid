@@ -119,7 +119,6 @@ public class TabItemView extends TextView implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-
     }
 
     public void setSwitchState(boolean isOn) {
