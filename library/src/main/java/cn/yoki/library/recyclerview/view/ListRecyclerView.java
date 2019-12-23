@@ -15,20 +15,16 @@ public class ListRecyclerView extends RecyclerView {
     }
 
     public ListRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
-
-
-
         super(context, attrs);
+        initView();
     }
 
     public ListRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initView();
     }
 
-
-
     private void initView() {
-
 
     }
 
