@@ -28,4 +28,6 @@ public class EmptyCell extends AbsStateCell{
     public void onBindViewHolder(BaseViewHolder holder, int position) {
 
     }
+
+
 }

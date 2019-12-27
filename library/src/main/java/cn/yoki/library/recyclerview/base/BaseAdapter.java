@@ -102,5 +102,4 @@ public abstract class BaseAdapter<V extends BaseCell> extends RecyclerView.Adapt
     }
 
 
-
 }

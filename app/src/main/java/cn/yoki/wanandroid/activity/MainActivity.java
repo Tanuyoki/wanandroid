@@ -65,9 +65,10 @@ public class MainActivity extends BaseActivity {
 
         ListRecyclerView listView = findViewById(R.id.home_relative);
         listView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        listView.setAdapter(new BaseAdapter());
-        listView.setItemAnimator(new DefaultItemAnimator());
-        listView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+//        listView.setAdapter(new BaseAdapter());
+//        listView.setItemAnimator(new DefaultItemAnimator());
+//        listView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+
 
     }
 

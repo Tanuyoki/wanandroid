@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import cn.yoki.library.recyclerview.Utils;
+import cn.yoki.library.recyclerview.cell.AbsStateCell;
 import cn.yoki.library.recyclerview.cell.EmptyCell;
 import cn.yoki.library.recyclerview.cell.ErrorCell;
 import cn.yoki.library.recyclerview.cell.LoadMoreCell;
@@ -152,6 +153,20 @@ public class SimpleAdapter extends BaseAdapter {
         }
         mErrorCell.setHeight(height);
         add(mErrorCell);
+    }
+
+    public void keepCount(int keepCount, int height, View view, boolean isShow, AbsStateCell cell) {
+        if (keepCount < 0 || keepCount > mListData.size()) {
+            return;
+        }
+        remove(keepCount, mListData.size() - keepCount);
+        checkNotContainSpecialCell();
+        isShow = true;
+        if (view != null) {
+            cell.setView(view);
+        }
+        cell.setHeight(height);
+        add(cell);
     }
 
     public void showError(View errorView){
