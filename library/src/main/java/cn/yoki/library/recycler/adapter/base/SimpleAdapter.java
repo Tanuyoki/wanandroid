@@ -1,4 +1,4 @@
-package cn.yoki.library.recyclerview.base;
+package cn.yoki.library.recycler.adapter.base;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import cn.yoki.library.recyclerview.Utils;
-import cn.yoki.library.recyclerview.cell.AbsStateCell;
-import cn.yoki.library.recyclerview.cell.EmptyCell;
-import cn.yoki.library.recyclerview.cell.ErrorCell;
-import cn.yoki.library.recyclerview.cell.LoadMoreCell;
-import cn.yoki.library.recyclerview.cell.LoadingCell;
+import cn.yoki.library.recycler.adapter.Utils;
+import cn.yoki.library.recycler.adapter.cell.AbsStateCell;
+import cn.yoki.library.recycler.adapter.cell.EmptyCell;
+import cn.yoki.library.recycler.adapter.cell.ErrorCell;
+import cn.yoki.library.recycler.adapter.cell.LoadMoreCell;
+import cn.yoki.library.recycler.adapter.cell.LoadingCell;
 
 public class SimpleAdapter extends BaseAdapter {
 

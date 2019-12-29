@@ -1,12 +1,12 @@
-package cn.yoki.library.recyclerview.cell;
+package cn.yoki.library.recycler.adapter.cell;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import cn.yoki.library.R;
-import cn.yoki.library.recyclerview.base.BaseViewHolder;
-import cn.yoki.library.recyclerview.base.SimpleAdapter;
+import cn.yoki.library.recycler.adapter.base.BaseViewHolder;
+import cn.yoki.library.recycler.adapter.base.SimpleAdapter;
 
 public class LoadingCell extends AbsStateCell {
 

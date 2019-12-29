@@ -1,4 +1,4 @@
-package cn.yoki.library.recyclerview.base;
+package cn.yoki.library.recycler.adapter.base;
 
 public abstract class BaseCell<T> implements Cell {
 

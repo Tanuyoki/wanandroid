@@ -3,16 +3,10 @@ package cn.yoki.wanandroid.activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.yoki.library.recyclerview.base.BaseAdapter;
-import cn.yoki.library.recyclerview.view.ListRecyclerView;
 import cn.yoki.library.utils.FragmentHelper;
 import cn.yoki.library.utils.StatusBarUtils;
 import cn.yoki.library.utils.SwitchUtils;
@@ -63,11 +57,7 @@ public class MainActivity extends BaseActivity {
 
         StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
 
-        ListRecyclerView listView = findViewById(R.id.home_relative);
-        listView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-//        listView.setAdapter(new BaseAdapter());
-//        listView.setItemAnimator(new DefaultItemAnimator());
-//        listView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+
 
 
     }

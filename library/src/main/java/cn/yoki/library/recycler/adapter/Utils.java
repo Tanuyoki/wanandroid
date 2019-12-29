@@ -1,4 +1,4 @@
-package cn.yoki.library.recyclerview;
+package cn.yoki.library.recycler.adapter;
 
 import android.content.Context;
 
