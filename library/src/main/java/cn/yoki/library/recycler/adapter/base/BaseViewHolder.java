@@ -27,9 +27,15 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
         return (V) view;
     }
 
+    public View getView(int resId) {
+        return retrieveView(resId);
+    }
+
     public void setText(int resId, CharSequence text) {
         TextView textView = retrieveView(resId);
         textView.setText(text);
     }
+
+
 
 }

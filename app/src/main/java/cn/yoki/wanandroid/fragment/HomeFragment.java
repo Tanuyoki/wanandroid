@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cn.yoki.library.okhttp.HttpClient;
@@ -26,6 +27,7 @@ import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerViewPager;
 import cn.yoki.wanandroid.base.BaseFragment;
 import cn.yoki.wanandroid.utils.Constant;
+import cn.yoki.wanandroid.utils.HomeCell;
 
 public class HomeFragment extends AbsBaseFragment {
 
@@ -37,20 +39,12 @@ public class HomeFragment extends AbsBaseFragment {
             public void onSuccess(Object object) {
                 JSONObject jsonObject = JSONObject.parseObject(String.valueOf(object));
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
-                List<View> list = new ArrayList<>();
+                List<String> list = new ArrayList<>();
                 for (int i = 0; i < jsonArray.size(); i++) {
                     String imagePath = jsonArray.getJSONObject(i).getString("imagePath");
-
-                    View view = View.inflate(getContext(), R.layout.adapter_banner, null);
-                    Glide.with(getContext())
-                            .load(imagePath)
-                            .into((ImageView) view.findViewById(R.id.banner_iv));
-                    list.add(view);
+                    list.add(imagePath);
                 }
-                ViewPager viewPager = getView().findViewById(R.id.home_vp);
-                BannerViewPager bannerViewPager = new BannerViewPager(list);
-                viewPager.setAdapter(bannerViewPager);
-
+                mBaseAdapter.addAll(getCells(list));
             }
         });
 
@@ -68,6 +62,9 @@ public class HomeFragment extends AbsBaseFragment {
 
     @Override
     protected List<Cell> getCells(List list) {
-        return null;
+        List<Cell> cells = new ArrayList<>();
+        cells.add(new HomeCell(list));
+        return cells;
     }
+
 }

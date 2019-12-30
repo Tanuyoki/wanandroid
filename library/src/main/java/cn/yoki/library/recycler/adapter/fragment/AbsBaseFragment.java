@@ -24,8 +24,8 @@ import cn.yoki.library.recycler.adapter.base.SimpleAdapter;
 
 public abstract class AbsBaseFragment<T> extends Fragment {
 
-    private RecyclerView mRecyclerView;
-    private SimpleAdapter mSimpleAdapter;
+    protected RecyclerView mRecyclerView;
+    protected SimpleAdapter mBaseAdapter;
     private FrameLayout mContainer;
     protected SwipeRefreshLayout mSwipeRefreshLayout;
     /**
@@ -47,8 +47,8 @@ public abstract class AbsBaseFragment<T> extends Fragment {
         mContainer = view.findViewById(R.id.toolbar_container);
         mRecyclerView = view.findViewById(R.id.base_fragment_rv);
         mRecyclerView.setLayoutManager(initLayoutManger());
-        mSimpleAdapter = initAdapter();
-        mRecyclerView.setAdapter(mSimpleAdapter);
+        mBaseAdapter = initAdapter();
+        mRecyclerView.setAdapter(mBaseAdapter);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -76,6 +76,9 @@ public abstract class AbsBaseFragment<T> extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 View firstView = recyclerView.getChildAt(0);
+                if (firstView == null) {
+                    return;
+                }
                 int top = firstView.getTop();
                 int topEdge = recyclerView.getPaddingTop();
                 //判断RecyclerView 的ItemView是否满屏，如果不满一屏，上拉不会触发加载更多
@@ -85,9 +88,9 @@ public abstract class AbsBaseFragment<T> extends Fragment {
                 int itemCount = manager.getItemCount();
                 //因为LoadMore View  是Adapter的一个Item,显示LoadMore 的时候，Item数量＋1了，导致 mLastVisibalePosition == itemCount-1
                 // 判断两次都成立，因此必须加一个判断条件 !mBaseAdapter.isShowLoadMore()
-                if(newState == RecyclerView.SCROLL_STATE_IDLE && mLastVisiblePosition == itemCount-1 && isFullScreen && !mSimpleAdapter.isShowLoadMore()){
+                if(newState == RecyclerView.SCROLL_STATE_IDLE && mLastVisiblePosition == itemCount-1 && isFullScreen && !mBaseAdapter.isShowLoadMore()){
                     //最后一个Item了
-                    mSimpleAdapter.showLoadMore();
+                    mBaseAdapter.showLoadMore();
                     onLoadMore();
                 }
             }
@@ -105,8 +108,8 @@ public abstract class AbsBaseFragment<T> extends Fragment {
      * hide load more progress
      */
     public void hideLoadMore(){
-        if(mSimpleAdapter!=null){
-            mSimpleAdapter.hideLoadMore();
+        if(mBaseAdapter !=null){
+            mBaseAdapter.hideLoadMore();
         }
     }
 
