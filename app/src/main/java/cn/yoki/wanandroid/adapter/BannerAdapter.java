@@ -8,11 +8,11 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.List;
 
-public class BannerViewPager extends PagerAdapter {
+public class BannerAdapter extends PagerAdapter {
 
     private List<View> mListView;
 
-    public BannerViewPager(List<View> listView) {
+    public BannerAdapter(List<View> listView) {
         this.mListView = listView;
     }
 

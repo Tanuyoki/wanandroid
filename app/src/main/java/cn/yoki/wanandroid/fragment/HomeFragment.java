@@ -4,10 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.fastjson.JSONArray;
@@ -15,56 +11,51 @@ import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import cn.yoki.library.okhttp.HttpClient;
 import cn.yoki.library.okhttp.listener.DisposeDataListener;
-import cn.yoki.library.recycler.ListRecyclerView;
-import cn.yoki.library.recycler.adapter.base.Cell;
-import cn.yoki.library.recycler.adapter.fragment.AbsBaseFragment;
 import cn.yoki.wanandroid.R;
-import cn.yoki.wanandroid.adapter.BannerViewPager;
+import cn.yoki.wanandroid.adapter.BannerAdapter;
 import cn.yoki.wanandroid.base.BaseFragment;
 import cn.yoki.wanandroid.utils.Constant;
-import cn.yoki.wanandroid.utils.HomeCell;
 
-public class HomeFragment extends AbsBaseFragment {
+public class HomeFragment extends BaseFragment {
 
     @Override
-    public void onRecyclerViewInitialized() {
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
+    }
 
+    @Override
+    protected void initView(View view, Bundle savedInstanceState) {
         HttpClient.get(Constant.API.HOME_BANNER, new DisposeDataListener() {
             @Override
             public void onSuccess(Object object) {
                 JSONObject jsonObject = JSONObject.parseObject(String.valueOf(object));
                 JSONArray jsonArray = jsonObject.getJSONArray("data");
-                List<String> list = new ArrayList<>();
+                List<View> list = new ArrayList<>();
                 for (int i = 0; i < jsonArray.size(); i++) {
                     String imagePath = jsonArray.getJSONObject(i).getString("imagePath");
-                    list.add(imagePath);
+                    View bannerView = View.inflate(mActivity, R.layout.adapter_banner,null);
+                    Glide.with(mActivity)
+                            .load(imagePath)
+                            .into((ImageView) bannerView.findViewById(R.id.banner_iv));
+                    list.add(bannerView);
                 }
-                mBaseAdapter.addAll(getCells(list));
+                ViewPager viewPager = view.findViewById(R.id.home_vp);
+                BannerAdapter vp = new BannerAdapter(list);
+                viewPager.setAdapter(vp);
+
             }
         });
 
-    }
 
-    @Override
-    public void onPullRefresh() {
 
     }
 
     @Override
-    public void onLoadMore() {
+    protected void destroyView() {
 
     }
-
-    @Override
-    protected List<Cell> getCells(List list) {
-        List<Cell> cells = new ArrayList<>();
-        cells.add(new HomeCell(list));
-        return cells;
-    }
-
 }
