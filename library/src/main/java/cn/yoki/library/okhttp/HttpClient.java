@@ -59,13 +59,14 @@ public class HttpClient {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String result = response.body().string();
-
-                handler.post(() -> {
-                    if (listener != null) {
-                        listener.onSuccess(result);
-                    }
-                });
+                handleResponse(response.body().string(), listener);
+//                String result = response.body().string();
+//
+//                handler.post(() -> {
+//                    if (listener != null) {
+//                        listener.onSuccess(result);
+//                    }
+//                });
             }
         });
 
@@ -105,7 +106,7 @@ public class HttpClient {
         
         handler.post(() -> {
             if (listener != null) {
-                listener.onSuccess(response);
+                listener.onSuccess(jsonObject);
             }
         });
     }

@@ -16,9 +16,11 @@
 
 package cn.yoki.library.okhttp.listener;
 
+import com.alibaba.fastjson.JSONObject;
+
 public abstract class DisposeDataListener {
 
-    public abstract void onSuccess(Object object);
+    public abstract void onSuccess(JSONObject data);
 
     public void onFailed(Object object, Exception e) {
         e.printStackTrace();

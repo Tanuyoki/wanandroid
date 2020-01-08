@@ -1,6 +1,8 @@
 package cn.yoki.wanandroid.activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.fragment.app.Fragment;
 
@@ -56,7 +58,6 @@ public class MainActivity extends BaseActivity {
         fragmentHelper.showFragment(0);
 
         StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
-
 
 
 
