@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.yoki.library.okhttp;
+package cn.yoki.library.http.okhttp;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
-import cn.yoki.library.okhttp.listener.DisposeDataListener;
+import cn.yoki.library.http.okhttp.listener.DisposeDataListener;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;

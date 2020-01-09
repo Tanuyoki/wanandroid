@@ -3,12 +3,7 @@ package cn.yoki.library.utils;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import androidx.fragment.app.Fragment;
-
-import java.util.List;
-import java.util.UUID;
-
-import cn.yoki.library.view.TabItemView;
+import cn.yoki.library.widget.view.TabItemView;
 
 public class SwitchUtils {
 

@@ -3,8 +3,8 @@ package cn.yoki.wanandroid.fragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -16,8 +16,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.yoki.library.okhttp.HttpClient;
-import cn.yoki.library.okhttp.listener.DisposeDataListener;
+import cn.yoki.library.http.okhttp.HttpClient;
+import cn.yoki.library.http.okhttp.listener.DisposeDataListener;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerAdapter;
 import cn.yoki.wanandroid.adapter.HomeAdapter;
@@ -64,6 +64,8 @@ public class HomeFragment extends BaseFragment {
                 RecyclerView recyclerView = view.findViewById(R.id.home_relative);
                 recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
                 recyclerView.setAdapter(new HomeAdapter(listData));
+                recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
+
 
             }
         });

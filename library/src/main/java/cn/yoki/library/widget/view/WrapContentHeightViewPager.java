@@ -1,4 +1,4 @@
-package cn.yoki.library.view;
+package cn.yoki.library.widget.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

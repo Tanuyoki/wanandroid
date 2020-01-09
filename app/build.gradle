@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.2.61'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
     api project(':library')

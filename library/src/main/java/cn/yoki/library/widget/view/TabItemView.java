@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package cn.yoki.library.view;
+package cn.yoki.library.widget.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

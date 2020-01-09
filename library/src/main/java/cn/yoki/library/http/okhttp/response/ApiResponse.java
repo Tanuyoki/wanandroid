@@ -1,4 +1,4 @@
-package cn.yoki.library.okhttp.response;
+package cn.yoki.library.http.okhttp.response;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

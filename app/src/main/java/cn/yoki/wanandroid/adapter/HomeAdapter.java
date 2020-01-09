@@ -1,5 +1,6 @@
 package cn.yoki.wanandroid.adapter;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @NonNull
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.adapter_home, null);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_home,  parent, false);
         HomeViewHolder vh = new HomeViewHolder(view);
         return vh;
     }
