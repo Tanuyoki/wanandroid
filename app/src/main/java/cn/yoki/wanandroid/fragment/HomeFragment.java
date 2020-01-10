@@ -70,6 +70,11 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
+//        RecyclerView recyclerView = view.findViewById(R.id.home_relative);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//        recyclerView.setAdapter(new HomeAdapter(listData));
+
+
     }
 
     @Override
