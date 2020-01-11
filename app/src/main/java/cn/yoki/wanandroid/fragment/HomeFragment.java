@@ -21,6 +21,7 @@ import cn.yoki.library.http.okhttp.listener.DisposeDataListener;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerAdapter;
 import cn.yoki.wanandroid.adapter.HomeAdapter;
+import cn.yoki.wanandroid.adapter.NewHomeAdapter;
 import cn.yoki.wanandroid.base.BaseFragment;
 import cn.yoki.wanandroid.utils.Constant;
 
@@ -70,9 +71,10 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
-//        RecyclerView recyclerView = view.findViewById(R.id.home_relative);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-//        recyclerView.setAdapter(new HomeAdapter(listData));
+//        NewHomeAdapter news = new NewHomeAdapter(mActivity, );
+        RecyclerView recyclerView = view.findViewById(R.id.home_relative);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//        recyclerView.setAdapter();
 
 
     }
