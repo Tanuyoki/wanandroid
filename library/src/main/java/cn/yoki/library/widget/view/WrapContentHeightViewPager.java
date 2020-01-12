@@ -2,11 +2,14 @@ package cn.yoki.library.widget.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
+
+import cn.yoki.library.utils.LogUtils;
 
 public class WrapContentHeightViewPager extends ViewPager {
 
@@ -34,4 +37,9 @@ public class WrapContentHeightViewPager extends ViewPager {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        LogUtils.d("ev.getX : " + ev.getX() + " ev.getY : " + ev.getY());
+        return super.onInterceptTouchEvent(ev);
+    }
 }

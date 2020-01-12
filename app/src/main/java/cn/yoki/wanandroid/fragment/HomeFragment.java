@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,11 +22,13 @@ import cn.yoki.library.http.okhttp.listener.DisposeDataListener;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerAdapter;
 import cn.yoki.wanandroid.adapter.HomeAdapter;
-import cn.yoki.wanandroid.adapter.NewHomeAdapter;
 import cn.yoki.wanandroid.base.BaseFragment;
 import cn.yoki.wanandroid.utils.Constant;
 
 public class HomeFragment extends BaseFragment {
+
+    private ViewPager viewPager;
+    private RecyclerView recyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -34,6 +37,9 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
+        viewPager = view.findViewById(R.id.home_vp);
+        recyclerView = view.findViewById(R.id.home_relative);
+
         HttpClient.get(Constant.API.HOME_BANNER, new DisposeDataListener() {
             @Override
             public void onSuccess(JSONObject data) {
@@ -47,11 +53,8 @@ public class HomeFragment extends BaseFragment {
                             .into((ImageView) bannerView.findViewById(R.id.banner_iv));
                     list.add(bannerView);
                 }
-                ViewPager viewPager = view.findViewById(R.id.home_vp);
                 BannerAdapter vp = new BannerAdapter(list);
                 viewPager.setAdapter(vp);
-
-
 
             }
         });
@@ -62,19 +65,13 @@ public class HomeFragment extends BaseFragment {
                 JSONArray jsonArray = data.getJSONObject("data").getJSONArray("datas");
                 List<JSONObject> listData = jsonArray.toJavaList(JSONObject.class);
 
-                RecyclerView recyclerView = view.findViewById(R.id.home_relative);
                 recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
                 recyclerView.setAdapter(new HomeAdapter(listData));
                 recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
 
-
             }
         });
 
-//        NewHomeAdapter news = new NewHomeAdapter(mActivity, );
-        RecyclerView recyclerView = view.findViewById(R.id.home_relative);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-//        recyclerView.setAdapter();
 
 
     }
