@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +18,14 @@ import java.util.List;
 
 import cn.yoki.library.http.okhttp.HttpClient;
 import cn.yoki.library.http.okhttp.listener.DisposeDataListener;
+import cn.yoki.library.widget.recyclerview.adapter.HeaderAndFooterWrapper;
+import cn.yoki.library.widget.recyclerview.listener.OnLoadModeListener;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.adapter.BannerAdapter;
 import cn.yoki.wanandroid.adapter.HomeAdapter;
 import cn.yoki.wanandroid.base.BaseFragment;
-import cn.yoki.wanandroid.utils.Constant;
+import cn.yoki.wanandroid.utils.Constants;
+import cn.yoki.wanandroid.utils.LoadListHelper;
 
 public class HomeFragment extends BaseFragment {
 
@@ -40,7 +42,7 @@ public class HomeFragment extends BaseFragment {
         viewPager = view.findViewById(R.id.home_vp);
         recyclerView = view.findViewById(R.id.home_relative);
 
-        HttpClient.get(Constant.API.HOME_BANNER, new DisposeDataListener() {
+        HttpClient.get(Constants.API.HOME_BANNER, new DisposeDataListener() {
             @Override
             public void onSuccess(JSONObject data) {
                 JSONArray jsonArray = data.getJSONArray("data");
@@ -59,18 +61,25 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
-        HttpClient.get(Constant.API.HOME_ARTICLE_LIST, new DisposeDataListener() {
-            @Override
-            public void onSuccess(JSONObject data) {
-                JSONArray jsonArray = data.getJSONObject("data").getJSONArray("datas");
-                List<JSONObject> listData = jsonArray.toJavaList(JSONObject.class);
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-                recyclerView.setAdapter(new HomeAdapter(listData));
-                recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
+        JSONArray jsonArray = data.getJSONObject("data").getJSONArray("datas");
+        List<JSONObject> listData = jsonArray.toJavaList(JSONObject.class);
+
+        HomeAdapter homeAdapter = new HomeAdapter(listData);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(view.getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView.addOnScrollListener(new OnLoadModeListener() {
+            @Override
+            public void onLoadMore() {
 
             }
         });
+
+        View loadingMode = View.inflate(view.getContext(), R.layout.loading_mode, null);
+        HeaderAndFooterWrapper wrapper = new HeaderAndFooterWrapper(homeAdapter);
+        wrapper.addFootView(loadingMode);
+
+        recyclerView.setAdapter(wrapper);
 
 
 

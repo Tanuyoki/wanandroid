@@ -37,9 +37,4 @@ public class WrapContentHeightViewPager extends ViewPager {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        LogUtils.d("ev.getX : " + ev.getX() + " ev.getY : " + ev.getY());
-        return super.onInterceptTouchEvent(ev);
-    }
 }

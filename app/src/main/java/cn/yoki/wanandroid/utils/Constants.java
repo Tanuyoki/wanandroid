@@ -1,15 +1,17 @@
 package cn.yoki.wanandroid.utils;
 
-public class Constant {
+public class Constants {
 
     public static String API_CENTER = "https://www.wanandroid.com";
 
     public static class API {
 
+        public static String LIST_TAIL = "/json";
+
         // 首页 BANNER
         public static String HOME_BANNER = API_CENTER + "/banner/json";
         // 文章列表
-        public static String HOME_ARTICLE_LIST = API_CENTER + "/article/list/0/json";
+        public static String HOME_ARTICLE_LIST = API_CENTER + "/article/list/";
         // 置顶文章
         public static String HOME_ARTICLE_TOP = API_CENTER + "/article/top/json";
         // 搜索热词
