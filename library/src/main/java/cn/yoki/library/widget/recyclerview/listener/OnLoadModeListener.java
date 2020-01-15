@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class OnLoadModeListener extends RecyclerView.OnScrollListener {
 
-    private boolean isSlidingUpward = false;
+    private boolean isSlidingUpward = true;
 
     @Override
     public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {

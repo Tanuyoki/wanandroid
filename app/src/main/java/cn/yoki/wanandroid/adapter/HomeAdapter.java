@@ -22,6 +22,16 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         this.listData = listData;
     }
 
+    public void addData(JSONObject data) {
+        listData.add(data);
+        notifyItemChanged(listData.size());
+    }
+
+    public void addDataAll(List<JSONObject> listData) {
+        this.listData = listData;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
