@@ -22,6 +22,7 @@ import cn.yoki.library.widget.recyclerview.adapter.HeaderAndFooterWrapper;
 import cn.yoki.library.widget.recyclerview.adapter.MultiItemTypeAdapter;
 import cn.yoki.library.widget.recyclerview.listener.OnLoadModeListener;
 import cn.yoki.wanandroid.R;
+import cn.yoki.wanandroid.activity.WebActivity;
 import cn.yoki.wanandroid.adapter.HomeAdapter;
 
 public class ListPageHelper implements MultiItemTypeAdapter.OnItemClickListener<JSONObject> {
@@ -36,7 +37,7 @@ public class ListPageHelper implements MultiItemTypeAdapter.OnItemClickListener<
     private HeaderAndFooterWrapper wrapperAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    private OnLoadSuccessListener onLoadSuccessListener;
+    private OnListPageListener onListPageListener;
 
     public ListPageHelper(Context context, String url) {
         this.context = context;
@@ -122,17 +123,25 @@ public class ListPageHelper implements MultiItemTypeAdapter.OnItemClickListener<
     }
 
     @Override
-    public void onItemClick(View view, RecyclerView.ViewHolder holder, JSONObject o, int position) {
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, JSONObject data, int position) {
+        Intent intent = new Intent(context, WebActivity.class);
+        intent.putExtra("link", data.getString("link"));
+        context.startActivity(intent);
 
     }
 
     @Override
-    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, JSONObject o, int position) {
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, JSONObject data, int position) {
         return false;
     }
 
-    public interface OnLoadSuccessListener {
-        void loadSuccess(JSONObject data);
+    public ListPageHelper setOnListPageListener(OnListPageListener onListPageListener) {
+        this.onListPageListener = onListPageListener;
+        return this;
+    }
+
+    public interface OnListPageListener {
+        void onItemClick(JSONObject data);
     }
 
 }

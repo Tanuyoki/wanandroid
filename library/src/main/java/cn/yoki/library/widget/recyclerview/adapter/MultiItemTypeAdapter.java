@@ -110,9 +110,9 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
     }
 
     public interface OnItemClickListener<T> {
-        void onItemClick(View view, RecyclerView.ViewHolder holder, T o, int position);
+        void onItemClick(View view, RecyclerView.ViewHolder holder, T data, int position);
 
-        boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, T o, int position);
+        boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, T data, int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {

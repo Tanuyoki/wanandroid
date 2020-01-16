@@ -1,5 +1,6 @@
 package cn.yoki.wanandroid.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 
@@ -20,8 +21,13 @@ public class WebActivity extends BaseActivity {
     }
 
     private void initView(Bundle savedInstanceState) {
-        webView = findViewById(R.id.activity_web_view);
+        Intent intent = getIntent();
+        if (intent == null)
+            return;
+        String link = intent.getStringExtra("link");
 
+        webView = findViewById(R.id.activity_web_view);
+        webView.loadUrl(link);
     }
 
 }

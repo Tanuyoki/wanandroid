@@ -1,5 +1,6 @@
 package cn.yoki.wanandroid.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import cn.yoki.library.http.okhttp.HttpClient;
 import cn.yoki.library.http.okhttp.listener.DisposeDataListener;
 import cn.yoki.library.widget.recyclerview.adapter.HeaderAndFooterWrapper;
 import cn.yoki.wanandroid.R;
+import cn.yoki.wanandroid.activity.WebActivity;
 import cn.yoki.wanandroid.adapter.BannerAdapter;
 import cn.yoki.wanandroid.adapter.HomeAdapter;
 import cn.yoki.wanandroid.base.BaseFragment;
