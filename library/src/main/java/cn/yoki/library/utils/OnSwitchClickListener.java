@@ -4,6 +4,6 @@ import android.view.View;
 
 public interface OnSwitchClickListener {
 
-    public void onSwitchClick(View view, boolean isOn, int index);
+    public void onSwitchClick(View view, boolean isOn, int position);
 
 }

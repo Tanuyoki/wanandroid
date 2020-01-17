@@ -1,10 +1,9 @@
 package cn.yoki.wanandroid.activity;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ import cn.yoki.library.utils.SwitchUtils;
 import cn.yoki.wanandroid.R;
 import cn.yoki.wanandroid.base.BaseActivity;
 import cn.yoki.wanandroid.fragment.HomeFragment;
+import cn.yoki.wanandroid.fragment.MainFragmentPagerAdapter;
 import cn.yoki.wanandroid.fragment.MeFragment;
 import cn.yoki.wanandroid.fragment.ProjectFragment;
 import cn.yoki.wanandroid.fragment.SquareFragment;
@@ -23,16 +23,23 @@ import cn.yoki.wanandroid.fragment.TreeFragment;
 public class MainActivity extends BaseActivity {
 
     private SwitchUtils switchUtils;
-    private FragmentHelper fragmentHelper;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
         initView();
     }
 
     private void initView() {
+        List<Fragment> list = new ArrayList<>();
+        list.add(new HomeFragment());
+        list.add(new SquareFragment());
+        list.add(new TreeFragment());
+        list.add(new ProjectFragment());
+        list.add(new MeFragment());
 
         switchUtils = new SwitchUtils(
                 findViewById(R.id.main_tab_home),
@@ -42,22 +49,30 @@ public class MainActivity extends BaseActivity {
                 findViewById(R.id.main_tab_me));
         switchUtils.enableSwitch();
         switchUtils.switchView(0);
-        switchUtils.setOnSwitchClickListener((view, isOn, index) -> {
+        switchUtils.setOnSwitchClickListener((view, isOn, position) -> {
             if (isOn)
-                fragmentHelper.showFragment(index);
+                viewPager.setCurrentItem(position);
         });
 
-        List<Fragment> list = new ArrayList<>();
-        list.add(new HomeFragment());
-        list.add(new SquareFragment());
-        list.add(new TreeFragment());
-        list.add(new ProjectFragment());
-        list.add(new MeFragment());
-        fragmentHelper = new FragmentHelper(
-                this, R.id.main_frame, getSupportFragmentManager(),  list);
-        fragmentHelper.showFragment(0);
+        viewPager = findViewById(R.id.main_container);
+        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 0, list));
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        StatusBarUtils.setStatusBarColor(R.color.colorPrimary);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switchUtils.switchView(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
 
 
 
